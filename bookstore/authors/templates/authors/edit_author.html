@@ -1,0 +1,18 @@
+{% extends 'books/layout/base.html' %}
+{% load static %}
+
+
+{% block 'content' %}
+<h class="mb-3">Edit author's Info</h>
+
+<form class="my-3" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit" class="btn btn-primary my-3">Submit</button>
+</form>
+{% endblock %}
+
+
+{% block 'JS_attachement' %}
+<script src="{% static 'books/js/script.js' %}"></script>
+{% endblock %}

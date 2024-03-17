@@ -1,0 +1,23 @@
+{% extends 'books/layout/base.html' %}
+{% load static %}
+
+{% block 'content' %}
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{% static 'books/images/'|add:bookInfo.image %}" class="d-block mx-auto" width="300px" height="500px">
+        </div>
+
+        <div class="col-sm-7">
+            <h3 class="mb-2">{{bookInfo.name}}</h3>
+            <h5 class="mb-5">Author : <span class="fw-light">{{bookInfo.author}}</span></h5>
+            <p>About the book: </p>
+            <p>{{bookInfo.desc}}</p>
+            <h5 class="mb-5">Price : <span class="fw-light">{{bookInfo.price}} L.E</span></h5>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

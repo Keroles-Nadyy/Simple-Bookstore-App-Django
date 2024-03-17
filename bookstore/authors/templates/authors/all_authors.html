@@ -1,0 +1,27 @@
+{% extends 'books/layout/base.html' %}
+{% load static %}
+
+{% block 'content' %}
+<a href="{% url 'author.creation' %}" class="btn btn-success my-3 py-3 px-4 align-self-end">Add New Author</a>
+
+<div class="row g-3 my-5">
+
+    {% for author in authors %}
+        <div class="col-lg-4">
+            <div class="card shadow-sm text-center rounded-2 border-0 px-4 pt-5 pb-4 d-flex align-items-center">
+                <div class="custom-icon mb-1 d-flex justify-content-center align-items-center rounded-circle">
+                    <img class="rounded-circle img-fluid mb-2" style="width: 7rem;  height: 7rem" src="{{author.image_url}}"/>
+                </div>
+                <h3 class="text-capitalize my-3 h5 fw-bold">{{author.name}}</h3>
+                <p>{{author.DOB|date}}</p>
+
+                <div class="controls">
+                    <a href="{{author.show_author_url }}" class="btn btn-secondary mx-2"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{% url 'author.edit' author.id %}" class="btn btn-warning mx-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{% url 'author.delete' author.id %}" class="btn btn-danger mx-2"><i class="fa-solid fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

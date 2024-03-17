@@ -1,0 +1,37 @@
+{% extends 'books/layout/base.html' %}
+{% block 'content' %}
+
+<h2 class="my-3 text-center">Book Info</h2>
+<form class="mb-3" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="bookname" class="form-label">Book Name</label>
+        <input type="text" name="name" class="form-control" id="bookname">
+    </div>
+    <div class="mb-3">
+        <label for="authorname" class="form-label">Author Name</label>
+        <input type="text" name="author" class="form-control" id="authorname">
+    </div>
+    <div class="mb-3">
+        <label for="bookpages" class="form-label">Book Pages</label>
+        <input type="number" name="pages" class="form-control" id="bookpages">
+    </div>
+    <div class="mb-3">
+        <label for="bookprice" class="form-label">Book Price</label>
+        <input type="number" name="price" class="form-control" id="bookprice">
+    </div>
+    <div class="mb-3">
+        <label for="bookimg" class="form-label">Book Image</label>
+        <input type="file" name="image" class="form-control" id="bookimg">
+    </div>
+    <div class="mb-3">
+        <label for="bookdesc" class="form-label">Description</label>
+        <textarea name="desc" id="bookdesc" cols="40" rows="2"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}
+
+

@@ -1,0 +1,25 @@
+{% extends 'books/layout/base.html' %}
+{% load static %}
+
+{% block 'content' %}
+
+<div class="row g-4 my-5">
+    {% for book in books %}
+    <div class="col-12 col-md-6 col-lg-4" width="20rem;">
+        <div class="shadow-sm">
+            <div class="overflow-hidden">
+                <img src="{% static 'books/images/'|add:book.image %}" class="d-block mx-auto" width="190px" height="250px" alt="" />
+            </div>
+            <div class="card-body p-4">
+                <h6 class="card-title">{{book.name}}</h6>
+                <p>Author: {{book.author}}</p>
+                <p>Price: {{book.price}} L.E</p>
+                <a href="{% url 'book.info' book.id %}" class="btn btn-primary">Show Book</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+

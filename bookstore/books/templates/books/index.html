@@ -1,0 +1,21 @@
+{% extends 'books/layout/base.html' %}
+{% load static %}
+
+{% block 'content' %}
+
+<header class="header vh-100">
+<div class="container row d-flex justify-content-center align-items-center">
+    <div class="col-lg-5">
+        <h3 class="h4">Welcome</h3>
+        <h2 class="display-4 fw-medium">A road to knowledge</h2>
+        <p class="description mx-auto">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quisquam, delectus quaerat eos dolore deleniti?
+        </p>
+    </div>
+    <div class="col-lg-7">
+        <img src="{% static 'books/images/home.svg' %}" class="mx-auto" width="650px" alt="">
+    </div>
+</div>
+</header>
+
+{% endblock %}

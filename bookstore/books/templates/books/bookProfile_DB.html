@@ -1,0 +1,59 @@
+{% extends 'books/layout/base.html' %}
+{% load static %}
+
+{% block 'content' %}
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{bookInfo_DB.image_url}}" class="d-block mx-auto" width="280px" height="420px">
+        </div>
+
+        <div class="col-sm-7">
+            <h3 class="mb-2">{{bookInfo_DB.name}}</h3>
+            <h5 class="mb-5">Author : <a class="fw-light" href="{{bookInfo_DB.author.show_author_url}}">{{bookInfo_DB.author}}</a></h5>
+            <p>About the book: </p>
+            <p>{{bookInfo_DB.desc}}</p>
+            <p>Pages: {{bookInfo_DB.pages}}</p>
+            <h5 class="mb-5">Price : <span class="fw-light">{{bookInfo_DB.price}} L.E</span></h5>
+            
+            <p>Added at: {{bookInfo_DB.created_at}}</p>
+            <p>Last Update: {{bookInfo_DB.updated_at}}</p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- {{bookInfo_DB.author.books.all}}
+{% for book in bookInfo_DB.author.books.all %}
+    {% if book.id != bookInfo_DB.id %}
+        <h3><a href="{{book.show_url}}">{{book.name}}</a></h3>
+    {% endif %}
+{% endfor %} -->
+<h3 class="mb-2">Related books</h3>
+<div class="row mb-5">
+{% for book in bookInfo_DB.author.books.all %}
+    {% if book.id != bookInfo_DB.id %}
+        <!-- <h3><a href="{{book.show_url}}">{{book.name}}</a></h3> -->
+        <div class="col-12 col-md-6" width="20rem;">
+            <div class="shadow-sm p-2 d-flex">
+                <div class="overflow-hidden">
+                    <img src="{{book.image_url}}" class="d-block mx-auto" width="90px" height="120px" alt="" />
+                </div>
+                <div class="card-body px-4">
+                    <div class="mb-2">
+                        <h6 class="card-title d-inline-block">{{book.name}}</h6>
+                        <a href="{{book.show_url}}" class="btn btn-secondary py-0 px-1"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <p class="mb-2"><span class="fw-bold">Author:</span> {{book.author}}</p>
+                    <p><span class="fw-bold">Price:</span> {{book.price}} L.E</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+    </div>
+{% endblock  %}
+
